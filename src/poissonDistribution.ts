@@ -7,70 +7,70 @@ import {add, multiply, pow, e, divide, factorial, MathType} from 'mathjs';
  * p = ----------
  *         k!
  *
- * where λ = mean, k = observed
+ * where λ = expected, k = observed
  */
 
 /**
- * Calculates the probability of a number of successes based on the mean number of successes
- * @param {number} mean - The mean number of successes
- * @param {number} observed - The number of successes in question
+ * Calculates the probability of a number of successes based on the expected value
+ * @param {number} observed - The number of occurences
+ * @param {number} expected - The expected value
  * @returns {*} The calculated probability
  */
-function poissonProbabilityApproximation (mean: number, observed: number): any {
-    const a: MathType = multiply(pow(mean,observed) ,pow(e, -mean));
+function poissonProbabilityApproximation (observed: number, expected: number): any {
+    const a: MathType = multiply(pow(expected,observed) ,pow(e, -expected));
     return divide(a,  factorial(observed));
 }
 
 
 /**
- * Calculates the probability of successes greater than a number of successes  based on the mean number of successes
- * @param {number} mean - The mean number of successes
- * @param {number} observed - The number of successes in question
+ * Calculates the probability of successes greater than a number of successes  based on the expected value
+ * @param {number} observed - The number of occurences
+ * @param {number} expected - The expected value
  * @returns {*} The calculated probability
  */
-function poissonProbabilityGreaterThan (mean: number, observed: number): any
+function poissonProbabilityGreaterThan (observed: number, expected: number): any
 {
-    return 1 - poissonProbabilityLowerOrEqual(mean, observed);
+    return 1 - poissonProbabilityLowerOrEqual(observed, expected);
 }
 
 /**
- * Calculates the probability of successes lower than a number of successes  based on the mean number of successes
- * @param {number} mean - The mean number of successes
- * @param {number} observed - The number of successes in question
+ * Calculates the probability of successes lower than a number of successes  based on the expected value
+ * @param {number} observed - The number of occurences
+ * @param {number} expected - The expected value
  * @returns {*} The calculated probability
  */
-function poissonProbabilityLowerThan (mean: number, observed: number): any {
+function poissonProbabilityLowerThan (observed: number, expected: number): any {
     let k = observed - 1
     let res: MathType = 0;
     while(k>=0) {
-        res = add(res, poissonProbabilityApproximation(mean, k));
+        res = add(res, poissonProbabilityApproximation(k, expected));
         k -= 1;
     }
     return res;
 }
 
 /**
- * Calculates the probability of successes greater or equal than a number of successes  based on the mean number of successes
- * @param {number} mean - The mean number of successes
- * @param {number} observed - The number of successes in question
+ * Calculates the probability of successes greater or equal than a number of successes  based on the expected value
+ * @param {number} observed - The number of occurences
+ * @param {number} expected - The expected value
  * @returns {*} The calculated probability
  */
-function poissonProbabilityGreaterOrEqual (mean: number, observed: number): any
+function poissonProbabilityGreaterOrEqual (observed: number, expected: number): any
 {
-    return 1 - poissonProbabilityLowerThan(mean, observed);
+    return 1 - poissonProbabilityLowerThan(observed, expected);
 }
 
 /**
- * Calculates the probability of successes lower than a number of successes  based on the mean number of successes
- * @param {number} mean - The mean number of successes
- * @param {number} observed - The number of successes in question
+ * Calculates the probability of successes lower than a number of successes  based on the expected value
+ * @param {number} observed - The number of occurences
+ * @param {number} expected - The expected value
  * @returns {*} The calculated probability
  */
-function poissonProbabilityLowerOrEqual (mean: number, observed: number): any {
+function poissonProbabilityLowerOrEqual (observed: number, expected: number): any {
     let k = observed
     let res: MathType = 0;
     while(k>=0) {
-        res = add(res, poissonProbabilityApproximation(mean, k));
+        res = add(res, poissonProbabilityApproximation(k, expected));
         k -= 1;
     }
     return res;
