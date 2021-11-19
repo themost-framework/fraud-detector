@@ -1,6 +1,8 @@
 import { FraudDetectorService, poissonProbabilityApproximation,
+    poissonProbabilityGreaterOrEqual,
+    zeroTruncatedProbabilityApproximation, 
     zeroTruncatedProbabilityGreaterThan,
-    zeroTruncatedProbabilityApproximation } from '../src/index';
+    zeroTruncatedProbabilityGreaterOrEqual} from '../src/index';
 import { ExpressDataApplication } from '@themost/express';
 import { round } from 'mathjs';
 import { TraceUtils } from '@themost/common';
@@ -52,8 +54,12 @@ describe('FraudDetectorService', () => {
     });
 
     it('should calculate greater than probability', () => {
-        TraceUtils.info(`poissonProbabilityApproximation(250, 50)`)
-        const value = poissonProbabilityApproximation(48, 50);
-        expect(round(value, 3)).toBe(.055);
+        TraceUtils.info(`poissonProbabilityGreaterOrEqual(2, 1.8)`)
+        let value = poissonProbabilityGreaterOrEqual(2, 1.8);
+        expect(round(value, 3)).toBe(.537);
+        // a service is being requested by an average of 3 users per minute
+        // what's the probability to get more than 15 requests
+        value = poissonProbabilityGreaterOrEqual(10, 3);
+        expect(round(value, 3)).toBe(0.001);
     });
 });

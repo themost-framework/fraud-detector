@@ -23,7 +23,7 @@ function poissonProbabilityApproximation (observed: number, expected: number): a
 
 
 /**
- * Calculates the probability of successes greater than a number of successes  based on the expected value
+ * Calculates the probability of occurrences greater than a number of occurrences  based on the expected value
  * @param {number} observed - The number of occurences
  * @param {number} expected - The expected value
  * @returns {*} The calculated probability
@@ -34,7 +34,7 @@ function poissonProbabilityGreaterThan (observed: number, expected: number): any
 }
 
 /**
- * Calculates the probability of successes lower than a number of successes  based on the expected value
+ * Calculates the probability of occurrences lower than a number of occurences based on the expected value
  * @param {number} observed - The number of occurences
  * @param {number} expected - The expected value
  * @returns {*} The calculated probability
@@ -50,7 +50,7 @@ function poissonProbabilityLowerThan (observed: number, expected: number): any {
 }
 
 /**
- * Calculates the probability of successes greater or equal than a number of successes  based on the expected value
+ * Calculates the probability of occurrences greater or equal to a number of occurrences based on the expected value
  * @param {number} observed - The number of occurences
  * @param {number} expected - The expected value
  * @returns {*} The calculated probability
@@ -61,7 +61,7 @@ function poissonProbabilityGreaterOrEqual (observed: number, expected: number): 
 }
 
 /**
- * Calculates the probability of successes lower than a number of successes  based on the expected value
+ * Calculates the probability of occurrences lower or equal to a number of occurrences  based on the expected value
  * @param {number} observed - The number of occurences
  * @param {number} expected - The expected value
  * @returns {*} The calculated probability
