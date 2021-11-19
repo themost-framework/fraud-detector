@@ -1,4 +1,5 @@
 import { FraudDetectorService, poissonProbabilityApproximation,
+    zeroTruncatedProbabilityGreaterThan,
     zeroTruncatedProbabilityApproximation } from '../src/index';
 import { ExpressDataApplication } from '@themost/express';
 import { round } from 'mathjs';
@@ -48,5 +49,11 @@ describe('FraudDetectorService', () => {
         TraceUtils.info(`poissonProbabilityApproximation(6, 1) = .0005`)
         value = poissonProbabilityApproximation(6, 1);
         expect(round(value, 4)).toBe(.0005);
+    });
+
+    it('should calculate greater than probability', () => {
+        TraceUtils.info(`poissonProbabilityApproximation(250, 50)`)
+        const value = poissonProbabilityApproximation(48, 50);
+        expect(round(value, 3)).toBe(.055);
     });
 });
