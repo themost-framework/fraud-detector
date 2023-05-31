@@ -26,16 +26,18 @@
     "url": "https://github.com/themost-framework/fraud-detector/issues"
   },
   "homepage": "https://github.com/themost-framework/fraud-detector#readme",
+  "peerDependencies": {
+    "@themost/data": "^2",
+    "@themost/express": "^1.6.0",
+    "@themost/query": "^2",
+    "@themost/xml": "^2"
+  },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.0",
-    "@themost/data": "^2.6.1",
-    "@themost/express": "^1.5.18",
-    "@themost/query": "^2.5.0",
-    "@themost/xml": "^2.5.1",
     "@types/jasmine": "^3.10.1",
     "@types/mathjs": "^9.4.2",
     "@types/node": "^16.11.6",
-    "jasmine": "^3.10.0",
+    "jasmine": "^5.0.0",
     "jasmine-spec-reporter": "^7.0.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.59.0",
