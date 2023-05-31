@@ -15,3 +15,6 @@ tsconfig.json
 
 # lint
 tslint.json
+
+# gitpod
+.gitpod.yml
